@@ -1,0 +1,13 @@
+<html>
+<head>
+<script>
+chrome.extension.onRequest.addListener(
+    function(request, sender, sendResponse) {
+        if (request.what == "options")
+            sendResponse({options: localStorage.options});
+        else
+            sendResponse({});
+    });
+</script>
+</head>
+</html>

@@ -1,0 +1,18 @@
+{
+    "name": "QwiLogin",
+    "version": "0.1",
+    "description": "Automatically fills in the login and channel fields on qwebirc's login page.",
+    "content_scripts": [
+        {
+            "matches": ["http://webchat.freenode.net/", "http://webchat.quakenet.org/"],
+            "js": ["qwilogin.js"]
+        }
+    ],
+    "icons": {
+        "32": "icon-32x32.png",
+        "48": "icon-48x48.png",
+        "128": "icon-128x128.png"
+    },
+    "background_page": "background.html",
+    "options_page": "options.html"
+}
