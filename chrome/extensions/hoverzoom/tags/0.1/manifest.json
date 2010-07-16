@@ -1,0 +1,45 @@
+{
+    "name": "Hover Zoom",
+    "version": "0.1",
+    "description": "Move the mouse cursor over a link to an image to view it in full size.",
+	"update_url": "http://romanito.googlecode.com/svn/chrome/extensions/hoverzoom/trunk/update.xml",
+	"icons": {
+		"16": "icon16.png",
+		"32": "icon32.png",
+		"48": "icon48.png",
+		"128": "icon128.png"
+	},
+	"content_scripts": [
+        {
+			"matches": ["http://*/*"],
+			"css": ["hoverzoom.css"],
+            "js": ["jquery.min.js", "hoverzoom.js"],
+			"all_frames": true
+        },
+        {
+			"matches": ["http://*/*"],
+            "js": ["plugins/default.js"],
+			"run_at": "document_start"
+        },
+        {
+			"matches": ["http://*.facebook.com/*"],
+            "js": ["plugins/facebook.js"],
+			"run_at": "document_start"
+        },
+        {
+			"matches": ["http://*.flickr.com/*"],
+            "js": ["plugins/flickr.js"],
+			"run_at": "document_start"
+        },
+        {
+			"matches": ["http://picasaweb.google.com/*"],
+            "js": ["plugins/picasa.js"],
+			"run_at": "document_start"
+        },
+        {
+			"matches": ["http://*.deviantart.com/*"],
+            "js": ["plugins/deviantart.js"],
+			"run_at": "document_start"
+        }
+	]
+}
