@@ -10,7 +10,7 @@ hoverZoomPlugins.push( {
 		hoverZoom.urlReplace(res, 
 			'a img[src*=._V1.]',
 			/\._V1\..*\./,
-			'.'
+			options.showHighRes ? '.' : '._V1._SX600_SY600_.'
 		);
 		callback($(res));
 	}

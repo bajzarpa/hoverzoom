@@ -661,6 +661,11 @@
 			"matches": ["http://*.events-gallery.ch/*"],
             "js": ["plugins/events-gallery.ch.js"],
 			"run_at": "document_start"
+        },
+        {
+			"matches": ["http://*.knowyourmeme.com/*"],
+            "js": ["plugins/knowyourmeme.js"],
+			"run_at": "document_start"
         }
 	]
 }
