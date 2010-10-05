@@ -23,7 +23,9 @@ var hoverZoomPluginFlickerA = {
 			
 			// Second processing, this time with API calls.
 			// Will overwrite values from first processing if larger images are found.
-			hoverZoomPluginFlickerA.prepareImgLinkFromSrc(link, src, callback);
+			if (options.showHighRes) {
+				hoverZoomPluginFlickerA.prepareImgLinkFromSrc(link, src, callback);
+			}
 		});
 		callback($(res));
 		
@@ -62,7 +64,8 @@ var hoverZoomPluginFlickerA = {
 	prepareImgLinkFromPhotoId: function(link, photoId, callback) {
 		if (!link || !photoId) { return; }
 		// Check if the url was stored
-		var storedUrl = localStorage['flickrPhoto' + photoId];		
+		var cachePrefix = 'cache_FlickrPhoto_' + (options.showHighRes ? 'hi' : 'lo') + '_';
+		var storedUrl = localStorage[cachePrefix + photoId];		
 		if (storedUrl) {
 			link.data('hoverZoomSrc', [storedUrl]);
 			callback(link);
@@ -77,7 +80,7 @@ var hoverZoomPluginFlickerA = {
 				}
 				var src = '';
 				for (var i=0; i<rsp.sizes.size.length; i++) {
-					if (rsp.sizes.size[i].label == 'Original' || rsp.sizes.size[i].label == 'Large' || rsp.sizes.size[i].label == 'Medium') {
+					if (options.showHighRes && rsp.sizes.size[i].label == 'Original' || options.showHighRes && rsp.sizes.size[i].label == 'Large' || rsp.sizes.size[i].label == 'Medium') {
 						src = rsp.sizes.size[i].source;
 					}
 				}
@@ -86,7 +89,7 @@ var hoverZoomPluginFlickerA = {
 					callback(link);
 					
 					// Items are stored to lessen API calls
-					localStorage['flickrPhoto' + photoId] = src;
+					localStorage[cachePrefix + photoId] = src;
 				}
 			});
 		}

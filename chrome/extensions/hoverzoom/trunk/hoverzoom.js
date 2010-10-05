@@ -4,6 +4,8 @@
 var hoverZoomPlugins = hoverZoomPlugins || [];
 
 var hoverZoom = {
+	
+	options: {},
 
 	loadHoverZoom: function() {
 		var wnd = $(window),
@@ -17,7 +19,6 @@ var hoverZoom = {
 			mousePos = {},
 			loading = false,
 			loadFullSizeImageTimeout,
-			options = {},
 			actionKeyDown = false,
 			fullZoomKeyDown = false,
 			pageActionShown = false;
@@ -539,7 +540,9 @@ var hoverZoom = {
 			} else if (this.href) {
 				url = _this.attr('href');
 				link = _this;
-			} 
+			} else {
+				return;
+			}
 			if (link.data('hoverZoomSrc')) { return; }
 			if (!url) {	return;	}
 			if (Array.isArray(search)) {
