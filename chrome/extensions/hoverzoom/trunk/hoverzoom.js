@@ -202,10 +202,10 @@ var hoverZoom = {
 				hoverZoomImg.stop(true, true).fadeIn(options.fadeDuration);
 				
 				// Loading image container
-				imgLoading = imgLoading || $('<img />', {src: chrome.extension.getURL('images/loading.gif')});
+				imgLoading = imgLoading || $('<img class="loading" src="' + chrome.extension.getURL('images/loading.gif') + '"/>');
 				imgLoading.appendTo(hoverZoomImg);
 				
-				imgFullSize = $('<img/>').load(imgFullSizeOnLoad).error(imgFullSizeOnError).mousemove(imgFullSizeOnMouseMove).attr('src', imgSrc);
+				imgFullSize = $('<img class="progress"/>').appendTo(hoverZoomImg).load(imgFullSizeOnLoad).error(imgFullSizeOnError).mousemove(imgFullSizeOnMouseMove).attr('src', imgSrc);
 				
 				function imgFullSizeOnLoad() {
 					// Only the last hovered link gets displayed
@@ -214,6 +214,7 @@ var hoverZoom = {
 						hoverZoomImg.stop(true, true);
 						hoverZoomImg.offset({top:-9000, left:-9000});	// hides the image while making it available for size calculations
 						hoverZoomImg.empty();
+						imgFullSize.removeClass('progress');
 						$(this).appendTo(hoverZoomImg);
 						if (options.showCaptions && currentLink && currentLink.data('hoverZoomCaption')) {
 							hoverZoomCaption = $('<div/>', {id: 'hoverZoomCaption', text: currentLink.data('hoverZoomCaption')}).appendTo(hoverZoomImg);
@@ -233,11 +234,12 @@ var hoverZoom = {
 						var hoverZoomSrcIndex = currentLink ? currentLink.data('hoverZoomSrcIndex') : 0;
 						if (currentLink && hoverZoomSrcIndex < currentLink.data('hoverZoomSrc').length - 1) {
 							// If the link has several possible sources, we try to load the next one
+							imgFullSize.remove();
+							imgFullSize = null;
 							hoverZoomSrcIndex++;
 							currentLink.data('hoverZoomSrcIndex', hoverZoomSrcIndex);
 							console.info('[HoverZoom] Failed to load image: ' + imgSrc + '\nTrying next one...');
 							imgSrc = currentLink.data('hoverZoomSrc')[hoverZoomSrcIndex];
-							imgFullSize = null;
 							setTimeout(loadFullSizeImage, 100);
 						} else {
 							hideHoverZoomImg();

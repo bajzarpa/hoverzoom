@@ -3,15 +3,14 @@
 
 var hoverZoomPlugins = hoverZoomPlugins || [];
 hoverZoomPlugins.push( {
-	name: 'Last.fm',
+	name: 'Know Your Meme',
 	version: '0.1',
 	prepareImgLinks: function(callback) {
 		var res = [];
 		hoverZoom.urlReplace(res, 
-			'img[src*=/serve/]',
-			/\/serve\/.*\//,
-			'/serve/_/',
-			':not(.image, .art):eq(0)'
+			'a img.small',
+			'/small/',
+			'/original/'
 		);	
 		callback($(res));	
 	}
