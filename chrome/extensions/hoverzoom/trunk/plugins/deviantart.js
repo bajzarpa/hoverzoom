@@ -8,16 +8,24 @@ hoverZoomPlugins.push( {
 	prepareImgLinks: function(callback) {
 		var res = [];
 		$("a img[src^=http://th]").each(function() {
-			var _this = $(this);
-			var src = _this.attr('src');
+			var img = $(this);
+			var src = img.attr('src'), srcLo;
 			if (!src) { return; }
 			var aSrc = src.split('/');
+			if (!options.showHighRes) {
+				aSrc[4] = 'PRE';
+				srcLo = aSrc.join('/');
+			}
 			aSrc.splice(4, 1);
 			src = aSrc.join('/');
-			var link = _this.parents('a:eq(0)');
+			srcs = [src, src, src, src];
+			if (!options.showHighRes) {
+				srcs = [srcLo, srcLo].concat(srcs);
+			}
+			var link = img.parents('a:eq(0)');
 			// deviantArt tends to refuse to load images sometimes.
 			// src is stored several times in hoverZoomSrc so that it may retry several times if loading fails.
-			link.data('hoverZoomSrc', [src, src, src, src]);
+			link.data('hoverZoomSrc', srcs);
 			res.push(link);
 		});
 		callback($(res));

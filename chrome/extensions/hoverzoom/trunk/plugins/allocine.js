@@ -12,7 +12,11 @@ hoverZoomPlugins.push( {
 			var src = img.attr('src');
 			if (!src) return;
 			var aSrc = src.split('/');
-			aSrc.splice(3, 1)
+			if (options.showHighRes) {
+				aSrc.splice(3, 1)
+			} else {
+				aSrc[3] = 'r_600_600';
+			}
 			src = aSrc.join('/');
 			var link = $(this).parents('a:eq(0)');
 			link.data('hoverZoomSrc', [src]);

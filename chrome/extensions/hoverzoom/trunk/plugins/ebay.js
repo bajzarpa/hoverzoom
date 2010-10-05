@@ -13,6 +13,7 @@ hoverZoomPlugins.push( {
 		var requestUrlBase = 'http://open.api.ebay.com/shopping?appid=' + appId + '&version=687&siteid=0&callname=GetMultipleItems&responseencoding=JSON&ItemID=';
 		var itemIndex = 0;
 		var hzItems = [], itemIds = [];
+		var cachePrefix = 'cache_eBayItem_' + (options.showHighRes ? 'hi' : 'lo') + '_';
 	
 		// First we gather all the products on the page and we store their eBay ID and 
 		// the link that will receive the 'hoverZoomSrc' data.
@@ -34,7 +35,7 @@ hoverZoomPlugins.push( {
 		
 		// Check if some urls were stored
 		for (var i = 0; i < hzItems.length; i++) {
-			var storedItem = localStorage['eBayItem' + hzItems[i].id];
+			var storedItem = localStorage[cachePrefix + hzItems[i].id];
 			if (storedItem) {
 				storedItem = JSON.parse(storedItem);
 				var link = $(hzItems[i].link);
@@ -73,7 +74,7 @@ hoverZoomPlugins.push( {
 							res.push(link);
 							
 							// Items are stored to lessen API calls
-							localStorage['eBayItem' + item.ItemID] = JSON.stringify({pictureUrl: item.PictureURL[0], title: item.Title});
+							localStorage[cachePrefix + item.ItemID] = JSON.stringify({pictureUrl: item.PictureURL[0], title: item.Title});
 						}
 					}
 				}

@@ -44,6 +44,7 @@
 				options.extensionEnabled = $('#chkExtensionEnabled')[0].checked;
 				options.pageActionEnabled = $('#chkPageActionEnabled')[0].checked;
 				options.showCaptions = $('#chkShowCaptions')[0].checked;
+				options.showHighRes = $('#chkShowHighRes')[0].checked;
 				options.actionKey = parseInt($('#selActionKey').val());
 				options.fullZoomKey = parseInt($('#selFullZoomKey').val());
 				options.addToHistory = $('#chkAddToHistory')[0].checked;
@@ -70,6 +71,7 @@
 				$('#chkExtensionEnabled')[0].checked = options.extensionEnabled;
 				$('#chkPageActionEnabled')[0].checked = options.pageActionEnabled;
 				$('#chkShowCaptions')[0].checked = options.showCaptions;
+				$('#chkShowHighRes')[0].checked = options.showHighRes;
 				$('#chkAddToHistory')[0].checked = options.addToHistory;
 				$('#txtDisplayDelay').val((options.displayDelay || 0) / 1000);
 				$('#txtFadeDuration').val((options.fadeDuration || 0) / 1000);
@@ -149,6 +151,8 @@
 						<h2>View</h2>
 						<p><input type="checkbox" id="chkPageActionEnabled"> <label for="chkPageActionEnabled">Show extension icon in address bar</label></p>
 						<p><input type="checkbox" id="chkShowCaptions"> <label for="chkShowCaptions">Show pictures captions</label></p>
+						<p><input type="checkbox" id="chkShowHighRes"> <label for="chkShowHighRes">Show high resolution pictures when available<br>
+							<span style="font-size: 8pt; padding-left: 25px">(Pictures may take more time to load)</span></label></p>
 						<h2>Delays</h2>
 						<div id="delays">
 						<p><label for="txtDisplayDelay">Delay before displaying a picture</label>: <input type="textbox" id="txtDisplayDelay" size="1"> sec.</p>
