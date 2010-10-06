@@ -59,7 +59,7 @@ var hoverZoom = {
 				position.left -= offset;
 			}
 			
-			if (!imgFullSize.width() || !imgFullSize.height()) {
+			if (imgLoading) {
 				position.top -= 10;
 				if (!displayOnRight) {
 					position.left -= 25;
@@ -153,6 +153,7 @@ var hoverZoom = {
 			if (loading) { now = true; }
 			hoverZoomImg.stop(true, true).fadeOut(now ? 0 : options.fadeDuration, function() {
 				hoverZoomCaption = null;
+				imgLoading = null;
 				hoverZoomImg.empty();
 			});
 		}
@@ -226,7 +227,7 @@ var hoverZoom = {
 				imgLoading = imgLoading || $('<img class="loading" src="' + chrome.extension.getURL('images/loading.gif') + '"/>');
 				imgLoading.appendTo(hoverZoomImg);
 				
-				imgFullSize = $('<img/>').appendTo(hoverZoomImg).load(imgFullSizeOnLoad).error(imgFullSizeOnError).mousemove(imgFullSizeOnMouseMove).attr('src', imgSrc);
+				imgFullSize = $('<img/>').appendTo(hoverZoomImg).load(imgFullSizeOnLoad).error(imgFullSizeOnError).attr('src', imgSrc);
 				
 				skipFadeIn = false;
 				var showWhileLoading = imgSrc.substr(-4).toLowerCase() == '.gif';
@@ -244,8 +245,8 @@ var hoverZoom = {
 						hoverZoomImg.stop(true, true);
 						hoverZoomImg.offset({top:-9000, left:-9000});	// hides the image while making it available for size calculations
 						hoverZoomImg.empty();
-						imgFullSize.removeClass('progress');
-						$(imgFullSize).appendTo(hoverZoomImg);
+						imgLoading = null;
+						imgFullSize.removeClass('progress').appendTo(hoverZoomImg).mousemove(imgFullSizeOnMouseMove);
 						if (options.showCaptions && currentLink && currentLink.data('hoverZoomCaption')) {
 							hoverZoomCaption = $('<div/>', {id: 'hoverZoomCaption', text: currentLink.data('hoverZoomCaption')}).appendTo(hoverZoomImg);
 						}

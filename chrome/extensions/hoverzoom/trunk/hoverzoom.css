@@ -17,7 +17,7 @@
 	border: none;
 }
 #hoverZoomImg .loading { 
-	opacity: 0.5;
+	opacity: 0.8;
 }
 #hoverZoomImg .progress { 
 	opacity: 0.5;
