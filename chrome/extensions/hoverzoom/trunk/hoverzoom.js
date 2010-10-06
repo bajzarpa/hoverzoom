@@ -21,7 +21,9 @@ var hoverZoom = {
 			loadFullSizeImageTimeout,
 			actionKeyDown = false,
 			fullZoomKeyDown = false,
-			pageActionShown = false;
+			pageActionShown = false,
+			lastImgWidth = 0,
+			skipFadeIn = false;
 		
 		// Calculate optimal image position and size
 		function posImg(position) {
@@ -41,6 +43,9 @@ var hoverZoom = {
 			function posCaption() {
 				if (hoverZoomCaption) {
 					hoverZoomCaption.css('max-width', imgFullSize.width());
+					if (hoverZoomCaption.height() > 20) {
+						hoverZoomCaption.css('font-weight', 'normal');
+					}
 					while (hoverZoomImg.height() > wndHeight) {
 						imgFullSize.height(wndHeight - padding - hoverZoomCaption.height()).width('auto');
 						hoverZoomCaption.css('max-width', imgFullSize.width());
@@ -54,7 +59,7 @@ var hoverZoom = {
 				position.left -= offset;
 			}
 			
-			if (loading) {
+			if (!imgFullSize.width() || !imgFullSize.height()) {
 				position.top -= 10;
 				if (!displayOnRight) {
 					position.left -= 25;
@@ -96,7 +101,6 @@ var hoverZoom = {
 					}			
 				}
 				
-				position.top -= hoverZoomImg.height() / 2;
 				
 				// Height adjustment
 				if (hoverZoomImg.height() > wndHeight) {
@@ -104,6 +108,8 @@ var hoverZoom = {
 				}
 
 				posCaption();
+				
+				position.top -= hoverZoomImg.height() / 2;
 
 				// Display image on the left side if the mouse is on the right
 				if (!displayOnRight) {
@@ -111,8 +117,9 @@ var hoverZoom = {
 				}
 					
 				// Vertical position adjustments
-				if (position.top + hoverZoomImg.height() >= wndScrollTop + wndHeight) {
-					position.top = wndScrollTop + wndHeight - hoverZoomImg.height() - padding;
+				var maxTop = wndScrollTop + wndHeight - hoverZoomImg.height() - padding;
+				if (position.top > maxTop) {
+					position.top = maxTop;
 				}
 				if (position.top < wndScrollTop) {
 					position.top = wndScrollTop;
@@ -122,6 +129,20 @@ var hoverZoom = {
 			
 			position = {top: Math.round(position.top), left: Math.round(position.left)};
 			hoverZoomImg.css(position);
+		}
+		
+		function posWhileLoading() {
+			if (loading) {
+				posImg();
+				if (imgLoading && hoverZoomImg.width() > 40) {
+					imgLoading.remove();
+					imgLoading = null;
+					posImg();
+					setTimeout(function() { skipFadeIn = true; }, 200);
+				} else {
+					setTimeout(posWhileLoading, 100);
+				}
+			}
 		}
 		
 		function hideHoverZoomImg(now) {
@@ -205,21 +226,32 @@ var hoverZoom = {
 				imgLoading = imgLoading || $('<img class="loading" src="' + chrome.extension.getURL('images/loading.gif') + '"/>');
 				imgLoading.appendTo(hoverZoomImg);
 				
-				imgFullSize = $('<img class="progress"/>').appendTo(hoverZoomImg).load(imgFullSizeOnLoad).error(imgFullSizeOnError).mousemove(imgFullSizeOnMouseMove).attr('src', imgSrc);
+				imgFullSize = $('<img/>').appendTo(hoverZoomImg).load(imgFullSizeOnLoad).error(imgFullSizeOnError).mousemove(imgFullSizeOnMouseMove).attr('src', imgSrc);
+				
+				skipFadeIn = false;
+				var showWhileLoading = imgSrc.substr(-4).toLowerCase() == '.gif';
+				if (showWhileLoading) {
+					lastImgWidth = hoverZoomImg.width();
+					posWhileLoading();
+				} else {
+					imgFullSize.addClass('progress');
+				}
 				
 				function imgFullSizeOnLoad() {
 					// Only the last hovered link gets displayed
-					if (imgSrc == $(this).attr('src')) {
+					if (imgSrc == $(imgFullSize).attr('src')) {
 						loading = false;
 						hoverZoomImg.stop(true, true);
 						hoverZoomImg.offset({top:-9000, left:-9000});	// hides the image while making it available for size calculations
 						hoverZoomImg.empty();
 						imgFullSize.removeClass('progress');
-						$(this).appendTo(hoverZoomImg);
+						$(imgFullSize).appendTo(hoverZoomImg);
 						if (options.showCaptions && currentLink && currentLink.data('hoverZoomCaption')) {
 							hoverZoomCaption = $('<div/>', {id: 'hoverZoomCaption', text: currentLink.data('hoverZoomCaption')}).appendTo(hoverZoomImg);
 						}
-						hoverZoomImg.hide().fadeIn(options.fadeDuration);
+						if (!skipFadeIn) {
+							hoverZoomImg.hide().fadeIn(options.fadeDuration);
+						}
 						setTimeout(posImg, 10);
 						if (options.addToHistory && !chrome.extension.inIncognitoTab) {
 							chrome.extension.sendRequest({action: 'addUrlToHistory', url: imgSrc});
@@ -295,7 +327,8 @@ var hoverZoom = {
 					// Skip if the image has the same URL as the thumbnail.
 					// Base64 embedded thumbnails are filtered to avoid a freeze.
 					try {
-						if (_this.data('hoverZoomSrc')[0].indexOf("'") == -1 && 
+						if (_this.data('hoverZoomSrc')[0] == this.attr('src') ||
+							_this.data('hoverZoomSrc')[0].indexOf("'") == -1 && 
 							_this.find('img[src]').length && 
 							_this.find('img[src^=data]').length == 0 && 
 							_this.find('img[src="' + _this.data('hoverZoomSrc')[0] + '"]').length) {
@@ -537,7 +570,7 @@ var hoverZoom = {
 				}
 				link = _this.parents(parentFilter);
 			} else if (this.style && this.style.backgroundImage && this.style.backgroundImage.indexOf('url') > -1) {
-				url = this.style.backgroundImage.replace(/.*url\s*\(\s*(.*)\s*\).*/, '$1');
+				url = this.style.backgroundImage.replace(/.*url\s*\(\s*(.*)\s*\).*/i, '$1');
 				link = _this;
 			} else if (this.href) {
 				url = _this.attr('href');

@@ -10,18 +10,54 @@ hoverZoomPlugins.push( {
 		function srcReplace(src) {
 			return src.replace(/photos-\w/, 'sphotos').replace(/_[sqta]\./, '_n.').replace(/\/[sqta](\d)/, '/n$1');
 		}
+		
+		function getTooltip(link) {
+			var tooltip = link.find('[title], [alt]').add(link.parent('[title], [alt]')).add(link);
+			var tooltipText = tooltip.attr('title') || tooltip.attr('alt');
+			if (tooltipText) {
+				tooltip.removeAttr('title');
+				return tooltipText;
+			}
+			tooltip = link.find('.uiTooltipText:eq(0)');
+			var filter = '.actorName:eq(0), .passiveName:eq(0), .ego_title:eq(0), .uiAttachmentTitle:eq(0), .UIIntentionalStory_Names:eq(0), .fsl:eq(0)';
+			if (!tooltip.text()) {
+				tooltip = link.parent().find(filter).eq(0);
+			}
+			if (!tooltip.text()) {
+				tooltip = link.parent().parent().find(filter).eq(0);
+			}
+			while (tooltip.children().length) {
+				tooltip = tooltip.children().eq(0);
+			}
+			if (!tooltip.text()) {
+				tooltip = link.parents('.album:eq(0)').find('.desc a');
+			}
+			if (!tooltip.text()) {
+				tooltip = link.parents('.UIObjectListing:eq(0)').find('.UIObjectListing_Title');
+			}
+			if (!tooltip.text()) {
+				tooltip = link.parents('.UIStoryAttachment:eq(0)').find('.UIStoryAttachment_Title');
+			}
+			if (!tooltip.text()) {
+				tooltip = link.parents('.buddyRow:eq(0)').find('.UIImageBlock_Content');
+			}
+			return tooltip.text();
+		}
 	
 		var res = [];
 		
-		$('a img.img:not([src^="http://static.ak.fbcdn.net"]),a img.UIProfileImage').each(function() {			
-			var _this = $(this);
-			if (_this.parents('.uiSideNav').length) { return; }
-			
-			var link = _this.parents('a:eq(0)');
+		$('a img.img, a img.UIProfileImage').each(function() {			
+			var img = $(this);
+			if (img.parents('.uiSideNav').length) { return; }
 			
 			// Thumbnail URL
-			var src = _this.attr('src');
-			if (!src) { return; }
+			var src;
+			if (this.style && this.style.backgroundImage) {
+				src = this.style.backgroundImage.replace(/.*url\s*\(\s*(.*)\s*\).*/i, '$1');
+			} else {
+				src = img.attr('src');
+			}
+			if (!src || src.indexOf('static.ak.fbcdn.net') > -1) { return; }
 			src = unescape(src);
 			
 			// If image URL is included as a querystring parameter
@@ -40,14 +76,14 @@ hoverZoomPlugins.push( {
 				src = srcReplace(src);
 			}
 			
-			link.data('hoverZoomSrc', [src]);
+			img.data('hoverZoomSrc', [src]);
 			
-			var tooltip = _this.find('.uiTooltipText:eq(0)');
-			if (tooltip.length) {
-				link.data('hoverZoomCaption', tooltip.text());
+			var tooltip = getTooltip(img.parents('a:eq(0)'));
+			if (tooltip) {
+				img.data('hoverZoomCaption', tooltip);
 			}
 			
-			res.push(link);
+			res.push(img);
 		});
 		
 		// Photo albums		
