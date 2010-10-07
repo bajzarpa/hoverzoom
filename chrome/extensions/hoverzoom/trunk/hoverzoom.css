@@ -31,5 +31,6 @@
 #hoverZoomCaption {
 	font: menu;
 	font-weight: bold;
+	color: #333;
 	text-align: center;
 }

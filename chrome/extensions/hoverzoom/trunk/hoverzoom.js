@@ -310,6 +310,11 @@ var hoverZoom = {
 			if (titledElement && titledElement.length) {
 				link.data('hoverZoomCaption', titledElement.attr('title'));
 				titledElement.parents('[title]').andSelf().add('[title]').removeAttr('title');
+			} else {
+				var alt = link.attr('alt') || link.find('[alt]').attr('alt');
+				if (alt && alt.length > 6 && !/^[0-9]$/.test(alt)) {
+					link.data('hoverZoomCaption', alt);
+				}
 			}
 		}
 		
@@ -557,7 +562,7 @@ var hoverZoom = {
 		);
 	},
 	
-	// Utility function to be used by plugins.
+	// Public function to be used by plugins.
 	// Search for links or images using the 'filter' parameter,
 	// process their src or href attribute using the 'search' and 'replace' values,
 	// store the result in the link and add the link to the 'res' array.
@@ -565,21 +570,18 @@ var hoverZoom = {
 		$(filter).each(function() {
 			var _this = $(this), link, url;
 			if (this.src) {
-				url = _this.attr('src');
 				if (!parentFilter) {
 					parentFilter = 'a:eq(0)';
 				}
 				link = _this.parents(parentFilter);
-			} else if (this.style && this.style.backgroundImage && this.style.backgroundImage.indexOf('url') > -1) {
-				url = this.style.backgroundImage.replace(/.*url\s*\(\s*(.*)\s*\).*/i, '$1');
-				link = _this;
-			} else if (this.href) {
-				url = _this.attr('href');
-				link = _this;
+				if (!link.length) {
+					link = _this;
+				}
 			} else {
-				return;
+				link = _this;
 			}
 			if (link.data('hoverZoomSrc')) { return; }
+			url = hoverZoom.getThumbUrl(this);
 			if (!url) {	return;	}
 			if (Array.isArray(search)) {
 				for (var i=0; i<search.length; i++) {
@@ -591,6 +593,17 @@ var hoverZoom = {
 			link.data('hoverZoomSrc', [url]);
 			res.push(link);
 		});
+	},
+	
+	// Public function
+	// Extract a thumbnail url from an element, whether it be a link, 
+	// an image or a element with a background image.
+	getThumbUrl: function(el) {
+		if (el.style && el.style.backgroundImage && el.style.backgroundImage.indexOf('url') > -1) {
+			return el.style.backgroundImage.replace(/.*url\s*\(\s*(.*)\s*\).*/i, '$1');
+		} else {
+			return el.src || el.href;
+		}
 	}
 };
 
