@@ -51,12 +51,7 @@ hoverZoomPlugins.push( {
 			if (img.parents('.uiSideNav').length) { return; }
 			
 			// Thumbnail URL
-			var src;
-			if (this.style && this.style.backgroundImage) {
-				src = this.style.backgroundImage.replace(/.*url\s*\(\s*(.*)\s*\).*/i, '$1');
-			} else {
-				src = img.attr('src');
-			}
+			var src = hoverZoom.getThumbUrl(this);
 			if (!src || src.indexOf('static.ak.fbcdn.net') > -1) { return; }
 			src = unescape(src);
 			

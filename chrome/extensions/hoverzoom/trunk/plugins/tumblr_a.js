@@ -11,15 +11,19 @@ hoverZoomPlugins.push( {
 			var img = $(this),
 				url = img.attr('src'),
 				link = img.parents('a:eq(0)');
-			url = url.replace(/_[0-9a-z]*\.(.*)$/, '_maxwidth.$1');
-			link.data('hoverZoomSrc', [
-				url.replace('maxwidth', '1280'),
-				url.replace('maxwidth', '500'),
-				url.replace('maxwidth', '400'),
-				url.replace('maxwidth', '250'),
-				url.replace('maxwidth', '100')
-			]);
-			res.push(link);
+			var width = parseInt(url.replace(/^.*_([0-9a-z]*)\..*$/, '$1'));
+			var url = url.replace(/_[0-9a-z]*\.(.*)$/, '_maxwidth.$1');
+			var urls = [];
+			if (width < 1280) { urls.push(url.replace('maxwidth', '1280')); }
+			if (width < 500) { urls.push(url.replace('maxwidth', '500')); }
+			if (width < 400) { urls.push(url.replace('maxwidth', '400')); }
+			if (width < 250) { urls.push(url.replace('maxwidth', '250')); }
+			if (width < 128) { urls.push(url.replace('maxwidth', '128')); }
+			if (width < 100) { urls.push(url.replace('maxwidth', '100')); }
+			if (urls.length) {
+				link.data('hoverZoomSrc', urls);
+				res.push(link);
+			}
 		});
 		callback($(res));
 	}
