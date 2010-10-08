@@ -676,6 +676,11 @@
 			"matches": ["*://*.threadless.com/*"],
             "js": ["plugins/threadless.js"],
 			"run_at": "document_start"
+        },
+        {
+			"matches": ["*://*.viedemerde.fr/*"],
+            "js": ["plugins/viedemerde.js"],
+			"run_at": "document_start"
         }
 	]
 }

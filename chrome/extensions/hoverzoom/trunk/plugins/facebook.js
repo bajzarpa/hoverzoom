@@ -46,7 +46,7 @@ hoverZoomPlugins.push( {
 	
 		var res = [];
 		
-		$('a img.img, a img.UIProfileImage').each(function() {			
+		$('a img.img, a img.UIProfileImage, .itemsbox a img').each(function() {			
 			var img = $(this);
 			if (img.parents('.uiSideNav').length) { return; }
 			
@@ -54,24 +54,40 @@ hoverZoomPlugins.push( {
 			var src = hoverZoom.getThumbUrl(this);
 			if (!src || src.indexOf('static.ak.fbcdn.net') > -1) { return; }
 			src = unescape(src);
-			
+
 			// If image URL is included as a querystring parameter
 			var indexQS = src.lastIndexOf('&url=');
 			if (indexQS == -1) {
 				indexQS = src.lastIndexOf('&src=');
 			}
-				
+
 			if (indexQS > -1) {
 				src = unescape(src.substr(indexQS + 5));
 				if (!src) { return; }
-				if (src.indexOf('&') > -1) {
-					src = src.substr(0, src.indexOf('&'));
-				}
 			} else {
 				src = srcReplace(src);
 			}
+			if (src.indexOf('?') > -1) {
+				src = src.substr(0, src.indexOf('?'));
+			}
+			if (src.indexOf('&') > -1) {
+				src = src.substr(0, src.indexOf('&'));
+			}
 			
-			img.data('hoverZoomSrc', [src]);
+			var srcs = [];
+			
+			// Payvment webstore items 
+			if (src.indexOf('payvment') > -1) {
+				if (src.indexOf('noimageavailable') > -1) { return; }
+				if (src.indexOf('_125.') > -1) {
+					srcs.push(src.replace('_125.', '_230.'));				
+				} else {
+					srcs.push(src.replace(/\.(jpg|gif|png)$/, '_lg.$1'));				
+				}
+			}
+			
+			srcs.push(src);
+			img.data('hoverZoomSrc', srcs);
 			
 			var tooltip = getTooltip(img.parents('a:eq(0)'));
 			if (tooltip) {
