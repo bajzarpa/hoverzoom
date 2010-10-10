@@ -4,7 +4,7 @@
  * Fixed a bug with Flash handling.
  * New supported site: Tumblr.
 ===Version 1.3 - October 1, 2010===
- * New supported sites: CNET, Last.fm, MusicMe, TinyPic, PhotoBucket, Backpage.com, Wretch.cc, Beautify.it.
+ * New supported sites: CNET, Last.fm, !MusicMe, !TinyPic, !PhotoBucket, Backpage.com, Wretch.cc, Beautify.it.
  * Better Flash handling: the Flash objects are not hidden anymore.
  * Bug fixes.
 ===Version 1.2 - September 21, 2010===
@@ -12,7 +12,7 @@
  * Better Flickr and Imgur support (now works with links to image pages, bigger Flickr photos are loaded if available, Flickr Organize pages support).
  * Bug fixes.
 ===Version 1.1 - September 6, 2010===
- * New supported sites: Twitter, eBay, Play.com, Allociné, Flixter, Rotten tomatoes, GameSpot, Ravelry.
+ * New supported sites: Twitter, eBay, Play.com, Allociné, Flixter, Rotten tomatoes, !GameSpot, Ravelry.
  * New feature: full zoom key. Set a shortcut key to view photos using all available space.
  * Flash objects are hidden while viewing images to avoid overlapping.
  * Fixed deviantArt and Google Image Search plugins.
@@ -29,7 +29,7 @@
 ===Version 0.7===
  * Fixes a bug from 0.6.
 ===Version 0.6===
- * New supported sites: MySpace, Windows Live Photos, Amazon, Baidu
+ * New supported sites: !MySpace, Windows Live Photos, Amazon, Baidu
  * Bug fixes.
 ===Version 0.5===
  * Added fade effect (configurable)
