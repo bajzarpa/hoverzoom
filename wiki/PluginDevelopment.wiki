@@ -1,4 +1,5 @@
 #summary This page describes the basic process to write a plugin for Hover Zoom.
+#labels Phase-Implementation
 <wiki:toc />
 
 = Introduction =
