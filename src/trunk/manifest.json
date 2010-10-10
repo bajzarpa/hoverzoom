@@ -23,43 +23,44 @@
 	],
 	"content_scripts": [
         {
-			"matches": ["<all_urls>"],
-			"css": ["hoverzoom.css"],
             "js": ["hoverzoom.js"],
+			"css": ["hoverzoom.css"],
+			"matches": ["<all_urls>"],
 			"all_frames": true
         },
         {
-			"matches": ["<all_urls>"],
             "js": ["plugins/default.js"],
+			"matches": ["<all_urls>"],
 			"run_at": "document_start",
 			"all_frames": true
         },
         {
-			"matches": ["<all_urls>"],
             "js": ["plugins/imgur_a.js", 
 			       "plugins/flickr_a.js",
 				   "plugins/tumblr_a.js",
 				   "plugins/subimg.net_a.js"],
+			"matches": ["<all_urls>"],
 			"run_at": "document_start",
 			"all_frames": true
         },
         {
-			"matches": ["*://*.facebook.com/*"],
             "js": ["plugins/facebook.js"],
+			"matches": ["*://*.facebook.com/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.flickr.com/*"],
             "js": ["plugins/flickr.js"],
+			"matches": ["*://*.flickr.com/*"],
 			"run_at": "document_start"
         },
         {
+            "js": ["plugins/yahoo.js"],
 			"matches": ["*://*.search.yahoo.com/*",
 						"*://*.search.yahoo.co.jp/*"],
-            "js": ["plugins/yahoo.js"],
 			"run_at": "document_start"
         },
         {
+            "js": ["plugins/picasa.js"],
 			"matches": ["*://picasaweb.google.com/*", 
 						"*://picasaweb.google.ad/*", 
 						"*://picasaweb.google.ae/*", 
@@ -239,15 +240,15 @@
 						"*://picasaweb.google.co.zm/*", 
 						"*://picasaweb.google.co.zw/*", 
 						"*://picasaweb.google.cat/*"],
-            "js": ["plugins/picasa.js"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.deviantart.com/*"],
             "js": ["plugins/deviantart.js"],
+			"matches": ["*://*.deviantart.com/*"],
 			"run_at": "document_start"
         },
         {
+            "js": ["plugins/wikipedia.js"],
 			"matches": ["*://*.wikipedia.org/*", 
 				        "*://*.wikimedia.org/*", 
 						"*://*.wiktionary.org/*", 
@@ -258,10 +259,10 @@
 						"*://*.wikiversity.org/*",
 						"*://*.encyclopediadramatica.com/*",
 						"*://*/wiki/*"],
-            "js": ["plugins/wikipedia.js"],
 			"run_at": "document_start"
         },
 		{
+            "js": ["plugins/google.js"],
 			"matches": ["*://*.google.com/*", 
 						"*://*.google.ad/*", 
 						"*://*.google.ae/*", 
@@ -444,10 +445,10 @@
 						"*://*.google.co.zm/*", 
 						"*://*.google.co.zw/*", 
 						"*://*.google.cat/*"],
-            "js": ["plugins/google.js"],
 			"run_at": "document_start"
         },
         {
+            "js": ["plugins/opendesktop.js"],
 			"matches": ["*://opendesktop.org/*",
 						"*://kde-apps.org/*",
 						"*://gtk-apps.org/*",
@@ -484,45 +485,45 @@
 						"*://inkscapestuff.org/*",
 						"*://scribusstuff.org/*",
 						"*://blenderstuff.org/*"],
-            "js": ["plugins/opendesktop.js"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.twitpic.com/*"],
             "js": ["plugins/twitpic.js"],
+			"matches": ["*://*.twitpic.com/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.gamekult.com/*"],
             "js": ["plugins/gamekult.js"],
+			"matches": ["*://*.gamekult.com/*"],
 			"run_at": "document_start"
         },
         {
+            "js": ["plugins/imdb.js"],
 			"matches": ["*://*.imdb.com/*",
 						"*://*.imdb.de/*",
 						"*://*.imdb.it/*",
 						"*://*.imdb.es/*",
 						"*://*.imdb.fr/*",
 						"*://*.imdb.pt/*"],
-            "js": ["plugins/imdb.js"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://manager.co.th/*"],
             "js": ["plugins/image.aspx.js"],
+			"matches": ["*://manager.co.th/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.myspace.com/*"],
             "js": ["plugins/myspace.js"],
+			"matches": ["*://*.myspace.com/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.baidu.com/*"],
             "js": ["plugins/baidu.js"],
+			"matches": ["*://*.baidu.com/*"],
 			"run_at": "document_start"
         },
         {
+            "js": ["plugins/amazon.js"],
 			"matches": ["*://*.amazon.com/*",
 						"*://*.amazon.ca/*",
 						"*://*.amazon.cn/*",
@@ -530,25 +531,25 @@
 						"*://*.amazon.de/*",
 						"*://*.amazon.co.jp/*",
 						"*://*.amazon.co.uk/*"],
-            "js": ["plugins/amazon.js"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.photos.live.com/*"],
             "js": ["plugins/windowslive.js"],
+			"matches": ["*://*.photos.live.com/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.hi5.com/*"],
             "js": ["plugins/hi5.js"],
+			"matches": ["*://*.hi5.com/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.play.com/*"],
             "js": ["plugins/play.js"],
+			"matches": ["*://*.play.com/*"],
 			"run_at": "document_start"
         },
         {
+            "js": ["plugins/ebay.js"],
 			"matches": ["*://*.ebay.com/*",
 						"*://*.ebay.de/*",
 						"*://*.ebay.com.au/*",
@@ -570,53 +571,53 @@
 						"*://*.ebay.ch/*",
 						"*://*.ebay.co.th/*",
 						"*://*.ebay.vn/*"],
-            "js": ["plugins/ebay.js"],
 			"run_at": "document_start"
         },
         {
+            "js": ["plugins/allocine.js"],
 			"matches": ["*://*.allocine.fr/*",
 						"*://*.filmstarts.de/*",
 						"*://*.sensacine.com/*"],
-            "js": ["plugins/allocine.js"],
 			"run_at": "document_start"
         },
         {
+            "js": ["plugins/flixster.js"],
 			"matches": ["*://*.flixster.com/*",
 						"*://*.rottentomatoes.com/*"],
-            "js": ["plugins/flixster.js"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.gamespot.com/*"],
             "js": ["plugins/gamespot.js"],
+			"matches": ["*://*.gamespot.com/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.twitter.com/*"],
             "js": ["plugins/twitter.js"],
+			"matches": ["*://*.twitter.com/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.ravelry.com/*"],
             "js": ["plugins/ravelry.js"],
+			"matches": ["*://*.ravelry.com/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.jeuxvideo.com/*"],
             "js": ["plugins/jeuxvideo.com.js"],
+			"matches": ["*://*.jeuxvideo.com/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.beautify.it/*"],
             "js": ["plugins/beautify.it.js"],
+			"matches": ["*://*.beautify.it/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.cnet.com/*"],
             "js": ["plugins/cnet.js"],
+			"matches": ["*://*.cnet.com/*"],
 			"run_at": "document_start"
         },
         {
+            "js": ["plugins/lastfm.js"],
 			"matches": ["*://*.last.fm/*",
 						"*://*.lastfm.fr/*",
 						"*://*.lastfm.de/*",
@@ -628,59 +629,68 @@
 						"*://*.lastfm.ru/*",
 						"*://*.lastfm.se/*",
 						"*://*.lastfm.com.tr/*"],
-            "js": ["plugins/lastfm.js"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.musicme.com/*"],
             "js": ["plugins/musicme.js"],
+			"matches": ["*://*.musicme.com/*"],
 			"run_at": "document_start",
 			"all_frames": true
         },
         {
-			"matches": ["*://*.tinypic.com/*"],
             "js": ["plugins/tinypic.js"],
+			"matches": ["*://*.tinypic.com/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.photobucket.com/*"],
             "js": ["plugins/photobucket.js"],
+			"matches": ["*://*.photobucket.com/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.backpage.com/*"],
             "js": ["plugins/backpage.js"],
+			"matches": ["*://*.backpage.com/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.wretch.cc/*"],
             "js": ["plugins/wretch.cc.js"],
+			"matches": ["*://*.wretch.cc/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.events-gallery.ch/*"],
             "js": ["plugins/events-gallery.ch.js"],
+			"matches": ["*://*.events-gallery.ch/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.knowyourmeme.com/*"],
             "js": ["plugins/knowyourmeme.js"],
+			"matches": ["*://*.knowyourmeme.com/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.tshirthell.com/*"],
             "js": ["plugins/tshirthell.js"],
+			"matches": ["*://*.tshirthell.com/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.threadless.com/*"],
             "js": ["plugins/threadless.js"],
+			"matches": ["*://*.threadless.com/*"],
 			"run_at": "document_start"
         },
         {
-			"matches": ["*://*.viedemerde.fr/*"],
             "js": ["plugins/viedemerde.js"],
+			"matches": ["*://*.viedemerde.fr/*"],
 			"run_at": "document_start"
-        }
+        },
+        {
+            "js": ["plugins/xing.js"],
+			"matches": ["*://*.xing.com/*"],
+			"run_at": "document_start"
+        },
+		{
+			"js": [ "plugins/stern.de.js" ],
+			"matches": [ "*://*.stern.de/*" ],
+			"run_at": "document_start"
+		}
 	]
 }
