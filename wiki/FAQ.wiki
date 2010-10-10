@@ -1,5 +1,7 @@
 #summary Frequently asked questions and troubleshooting
 
+<wiki:toc />
+
 === When installing Hover Zoom, I get an error message `"Invalid value for content_scripts[0].matches[0]"` or `"Invalid value for permissions[1]"` ===
 
 This usually happens when your version of Google Chrome is out of date. 
@@ -10,3 +12,7 @@ Update it then trying installing Hover Zoom again.
 You have to move the mouse cursor over the blue text link below the thumbnail.
 
 In august of 2010, Google introduced a new version of Image Search, with a similar "zoom on mouse over" feature. To avoid being redundant, Hover Zoom has been designed so that the zoomed image is displayed only when the mouse cursor goes over the text link.
+
+=== I have found a issue that is not discussed here. Where do I report it? ===
+
+You may report bugs on [https://code.google.com/p/hoverzoom/issues/list this page]. Make sure that it doesn't have been already reported.
