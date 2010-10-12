@@ -1,5 +1,11 @@
 #summary Hover Zoom Changelog
 
+===Version 1.5 - October 12, 2010===
+ * New supported sites: Gawker sites (Gizmodo, Kotaku, Lifehacker, etc), !KnowYourMeme, Xing, Threadless, Tshirthell, Stern.de, Viedemerde.fr, Events-gallery.ch.
+ * New feature: the loading animation now displays loading progress.
+ * New option: load high resolution pictures if available (disabled by default).
+ * Facebook: support for more thumbnails and captions. Support for Payvment based webstores.
+ * Bug fixes.
 ===Version 1.4 - October 2, 2010===
  * Fixed a bug with Flash handling.
  * New supported site: Tumblr.
