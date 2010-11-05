@@ -1,5 +1,12 @@
 #summary Hover Zoom Changelog
 
+===Version 1.7 - November 5, 2010===
+ * New supported sites: Nintendo Life, Skyrock, !FMyLife and other versions of viedemerde, Tagged.com, Le bon coin.
+ * White list mode: zooming can now be enabled only for some specific sites.
+ * Transparency: zoomed images can now be semi-transparent.
+ * Fixes for eBay and Facebook.
+===Version 1.6 - October 13, 2010===
+ * Fixed a bug introduced in version 1.5.
 ===Version 1.5 - October 12, 2010===
  * New supported sites: Gawker sites (Gizmodo, Kotaku, Lifehacker, etc), !KnowYourMeme, Xing, Threadless, Tshirthell, Stern.de, Viedemerde.fr, Events-gallery.ch.
  * New feature: the loading animation now displays loading progress.
@@ -22,38 +29,38 @@
  * New feature: full zoom key. Set a shortcut key to view photos using all available space.
  * Flash objects are hidden while viewing images to avoid overlapping.
  * Fixed deviantArt and Google Image Search plugins.
-===Version 1.0===
+===Version 1.0 - August 26, 2010===
  * Fixed a bug introduced in version 0.9.
-===Version 0.9===
+===Version 0.9 - August 25, 2010===
  * Hover Zoom can now be disabled for specific sites.
  * Bugfix: Facebook photo albums.
  * Bugfix: Base64 embedded thumbnails.
  * Bugfix: deviantArt mature content.
  * Bugfix: Picasa Web Albums dynamic loading.
-===Version 0.8===
+===Version 0.8 - July 29, 2010===
  * Bugfix release for Mac and Linux users.
-===Version 0.7===
+===Version 0.7 - July 28, 2010===
  * Fixes a bug from 0.6.
-===Version 0.6===
+===Version 0.6 - July 28, 2010===
  * New supported sites: !MySpace, Windows Live Photos, Amazon, Baidu
  * Bug fixes.
-===Version 0.5===
+===Version 0.5 - July 26, 2010===
  * Added fade effect (configurable)
  * Added 'Action key' feature: images may now be displayed only if Shift or Ctrl is held down.
  * New supported sites: IMDb, Gamekult, Manager.co.th
  * Google Images new interface is now supported. To keep the extension unobtrusive, full size images are shown when the mouse is moved over blue links.
  * Bug fixes.
-===Version 0.4===
+===Version 0.4 - July 22, 2010===
  * Toolbar button has been moved to the address bar. It can be hidden via the Options page.
  * Links tooltips are now shown as a caption below the full size image (can be disabled via the Options page).
  * Added a small delay before displaying pictures (can me modified via the Options page).
  * Added an option to add viewed images to the browser's history (disabled by default).
  * Some bug fixes.
  * Google Images has been pulled off the supported sites list until I find a suitable solution for the new interface (tough one).
-===Version 0.3===
+===Version 0.3 - July 20, 2010===
  * New icon
  * Added a toolbar button to disable the extension
  * Fixed bug with zoomed in pages
  * Added support for openDesktop.org sites
-===Version 0.2===
+===Version 0.2 - July 16, 2010===
  * First public release
