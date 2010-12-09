@@ -1,5 +1,8 @@
 #summary Hover Zoom Changelog
 
+===Version 1.9 - December 9, 2010===
+ * New supported sites: Rakuten, Fukung, Gizmodo international sites (jp, de, pl, au), Copains d'avant.
+ * Fixes for Reddit, Amazon, Imgur, Tumblr...
 ===Version 1.8 - November 24, 2010===
  * New supported sites: !LinkedIn and Pixiv.net.
  * Fixed support for Facebook (forced HTTPS), Imgur, Picasa, Xing, Gamekult.
