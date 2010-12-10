@@ -42,7 +42,7 @@ hoverZoomPlugins.push( {
 
 This script will be run each time a page from the supported site is loaded. What it does is adding the plugin object to the global array named *hoverZoomPlugins*. The first line of the code creates this array if it doesn't exist.
 
-A plugin object has three main properties:
+A plugin object has three members:
  * name: usually the name of the supported site.
  * version: a version number. Usually 0.1, 0.2, 0.3, etc. The version number changes each time a new version of the plugin is released with a new version of Hover Zoom.
  * prepareImgLinks: a function that detects the image links and prepare them. More details below.
