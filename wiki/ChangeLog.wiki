@@ -1,5 +1,8 @@
 #summary Hover Zoom Changelog
 
+===Version 2.0 - December 29, 2010===
+ * New supported sites: Steam, Badoo, Engadget, Joystiq, Switched, Tuaw, 1x.com.
+ * Fixes for Facebook (chat box) and Tagged.
 ===Version 1.9 - December 9, 2010===
  * New supported sites: Rakuten, Fukung, Gizmodo international sites (jp, de, pl, au), Copains d'avant.
  * Fixes for Reddit, Amazon, Imgur, Tumblr...
