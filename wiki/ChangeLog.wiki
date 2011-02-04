@@ -1,5 +1,9 @@
 #summary Hover Zoom Changelog
 
+===Version 2.1 - February 4, 2011===
+ * New supported sites: Wired, Panoramio, Fotolog, Cyworld, Tweetmeme, Favstar.fm, Picplz, Blip.pl, Digart.pl, Maxmodels.pl.
+ * Fixes for Amazon, Last.fm, Imgur, Tumblr.
+ * Disabled Flickr text links until API usage issue is fixed.
 ===Version 2.0 - December 29, 2010===
  * New supported sites: Steam, Badoo, Engadget, Joystiq, Switched, Tuaw, 1x.com.
  * Fixes for Facebook (chat box) and Tagged.
