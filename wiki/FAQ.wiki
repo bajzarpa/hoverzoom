@@ -2,10 +2,16 @@
 
 <wiki:toc />
 
+=== Why does this extension need access to my browsing history and my data on all websites? ===
+
+Hover Zoom modifies the pages you are browsing, just like many other extensions (ad blockers for instance). It requires permissions that trigger those warnings. It doesn't, however, read through your browsing history or private data.
+ * [http://www.google.com/support/chrome/bin/answer.py?answer=186213 More details here].
+ * [http://www.google.com/support/forum/p/Chrome/thread?tid=30636989775092ba Revelant discussion].
+
 === When installing Hover Zoom, I get an error message `"Invalid value for content_scripts[0].matches[0]"` or `"Invalid value for permissions[1]"` ===
 
 This usually happens when your version of Google Chrome is out of date. 
-Update it then trying installing Hover Zoom again.
+Update it then try installing Hover Zoom again.
 
 === Hover Zoom doesn't work with Google Image Search ===
 
