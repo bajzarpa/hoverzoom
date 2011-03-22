@@ -1,5 +1,15 @@
 #summary Hover Zoom Changelog
 
+===Version 2.4 - March 22, 2011===
+ * New feature: support for downscaled images. This should add zooming support to a handful of sites.
+ * New supported site: Nofrag.
+===Version 2.3 - March 11, 2011===
+ * New feature: images preloading. Available from the omnibar icon and the options page (this may consume a lot of bandwidth though).
+ * Fixes for Vkontakte, Wikipedia, Flash objects handling.
+===Version 2.2 - March 9, 2011===
+ * New supported sites: Vkontakte.ru (partial), Plurk, Vimeo, !OkCupid, Bebo.
+ * Fixes for Tumblr (archive), deviantArt (https), Facebook, Gawker.
+ * Flickr API usage issue fixed, still needs to be validated by Flickr member support. Hopefully text links will work after that.
 ===Version 2.1 - February 4, 2011===
  * New supported sites: Wired, Panoramio, Fotolog, Cyworld, Tweetmeme, Favstar.fm, Picplz, Blip.pl, Digart.pl, Maxmodels.pl.
  * Fixes for Amazon, Last.fm, Imgur, Tumblr.
