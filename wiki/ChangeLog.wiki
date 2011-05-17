@@ -1,5 +1,16 @@
 #summary Hover Zoom Changelog
 
+===Version 2.8 - May 17, 2011===
+ * New supported sites: Liveshare, Zing.vn.
+ * Bugfixes.
+===Version 2.7 - May 6, 2011===
+ * Fixed a bug introduced in version 2.6.
+===Version 2.6 - May 6, 2011===
+ * Images are now shown while loading (can be disabled).
+ * New supported sites: !YouTube, Pict.mobi, all sites and forums powered by !WordPress, vBulletin and IP.Board.
+ * Better support for Wikimedia based sites.
+===Version 2.5 - March 23, 2011===
+ * Fixed a bug with image-only pages.
 ===Version 2.4 - March 22, 2011===
  * New feature: support for downscaled images. This should add zooming support to a handful of sites.
  * New supported site: Nofrag.
