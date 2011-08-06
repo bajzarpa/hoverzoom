@@ -1,5 +1,16 @@
 #summary Hover Zoom Changelog
 
+===Version 3.1 - August 6, 2011===
+ * New supported sites: 500px, Asos, Etsy.
+ * Fixes for Google+, Yelp and Photobucket.
+===Version 3.0 - July 13, 2011===
+ * Google+ support.
+ * Fixes for Facebook, Tumblr, Imageshack and Quickmeme.
+===Version 2.9 - June 21, 2011===
+ * New supported sites: !QuickMeme, !FunnyJunk, !WeHeartIt, Blogo.it, Sky.it, Google Code, Hwzon.co.il.
+ * Support for Flickr page links is back. Hopefully it will last longer this time.
+ * WebP support.
+ * Experimental feature: automatic full zoom. It's not perfect though, and may change in the future.
 ===Version 2.8 - May 17, 2011===
  * New supported sites: Liveshare, Zing.vn.
  * Bugfixes.
