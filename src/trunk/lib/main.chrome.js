@@ -1,11 +1,20 @@
-﻿function onConnect(port) {
+﻿
+function postMessage(message, context) {
+	context.postMessage(message);
+}
+
+function onConnect(port) {
 	port.onMessage.addListener(function(message) {
 		switch(message.action) {
 			case 'getOptions':
-				port.postMessage({action: 'setOptions', data: main.options});
+				onGetOptions(port);
+				break;
+			case 'getModulesPerHost':
+				onGetModulesPerHost(message.data, port);
 				break;
 		}
 	});
 }
 
 chrome.extension.onConnect.addListener(onConnect);
+document.addEventListener('DOMContentLoaded', init, false);
