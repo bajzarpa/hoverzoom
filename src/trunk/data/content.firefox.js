@@ -6,3 +6,7 @@ self.port.on('setOptions', function(data){
 	onSetOptions(data);
 });
 
+self.port.on('setModulesPerHost', function(data){
+	onSetModulesPerHost(data);
+});
+

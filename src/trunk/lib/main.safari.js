@@ -1,8 +1,15 @@
 ﻿
+function postMessage(message, msgEvent) {
+	msgEvent.target.page.dispatchMessage(message.action, message.data);
+}
+
 function handleMessage(msgEvent) {
 	switch(msgEvent.name) {
 		case 'getOptions':
-			msgEvent.target.page.dispatchMessage('setOptions', main.options);
+			onGetOptions(msgEvent);
+			break;
+		case 'getModulesPerHost':
+			onGetModulesPerHost(msgEvent.message, msgEvent);
 			break;
 	}
 }

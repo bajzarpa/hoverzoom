@@ -3,6 +3,9 @@
 		case 'setOptions':
 			onSetOptions(msgEvent.message);
 			break;
+		case 'setModulesPerHost':
+			onSetModulesPerHost(msgEvent.message);
+			break;
 	}
 }
 safari.self.addEventListener('message', handleMessage, false);

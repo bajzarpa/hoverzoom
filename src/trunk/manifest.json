@@ -17,7 +17,9 @@
 	"background": {
 		"scripts": [
 			"lib/main.js",
-			"lib/main.chrome.js"
+			"lib/main.chrome.js",
+			"modules/default.js",
+			"modules/facebook.js"
 		]
 	},
 	"content_scripts": [

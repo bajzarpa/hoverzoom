@@ -1,11 +1,21 @@
 // Copyright (c) 2012 Romain Vallet <romain.vallet@gmail.com>
 // Licensed under the MIT license, read license.txt
 
-var hoverZoomPlugins = hoverZoomPlugins || [];
-hoverZoomPlugins.push( {
+modules.push( {
 	name: 'Facebook',
-	version: '0.9',
-	prepareImgLinks: function(callback) {
+	version: '1.0',
+	matches: ['facebook.com'],
+	getLinks: function() {
+		var links = [];
+		document.getElementsByTagName('img').forEach(function(img) {
+			if ((typeof img.src === 'string') && img.src.indexOf('fbcdn') > -1) {
+				links.push({element: img, imageUrls: [img.src.replace(/_[sqta]\./, '_n.')]});
+			}
+		});
+		return links;
+	}
+	
+	/*prepareImgLinks: function(callback) {
 	
 		$('img[src*="fbcdn"], img[src*="fbexternal"], [style*="fbcdn"], [style*="fbexternal"]').mouseenter(function() {
 			var img = $(this),
@@ -87,5 +97,5 @@ hoverZoomPlugins.push( {
 			}
 			return tooltip.text();
 		}
-	}
+	}*/
 });

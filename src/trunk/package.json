@@ -6,5 +6,5 @@
     "fullName": "Hover Zoom", 
     "id": "jid1-1eB932XI3t7clg", 
     "description": "Enlarge thumbnails on mouse over. Works on many sites (Facebook, Twitter, Flickr, Reddit, Amazon, Tumblr, etc).",
-	"main": "main.firefox"
+	"main": "main.firefox.compiled"
 }
