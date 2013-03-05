@@ -1,6 +1,6 @@
 ﻿{
     "name":"Hover Zoom",
-    "version":"4.11.5",
+    "version":"4.12",
     "description":"__MSG_extDescription__",
     "manifest_version":2,
     "update_url": "http://hoverzoom.net/chrome/updates.xml",
@@ -1065,6 +1065,22 @@
         {
             "js":[ "plugins/lazygirls_info.js" ],
             "matches":[ "*://*.lazygirls.info/*" ]
+        },
+        {
+            "js":[ "plugins/zhihu.js" ],
+            "matches":[ "*://*.zhihu.com/*" ]
+        },
+        {
+            "js":[ "plugins/hupu.js" ],
+            "matches":[ "*://*.hupu.com/*" ]
+        },
+        {
+            "js":[ "plugins/weibo.js" ],
+            "matches":[ "*://*.weibo.com/*" ]
+        },
+        {
+            "js":[ "plugins/douban.js" ],
+            "matches":[ "*://*.douban.com/*" ]
         },
         {
             "js":["js/hoverzoom.js"],
