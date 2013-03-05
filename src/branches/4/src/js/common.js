@@ -28,6 +28,7 @@ function loadOptions() {
     options.enableAds = options.hasOwnProperty('enableAds') ? options.enableAds : 0;
     options.filterNSFW = options.hasOwnProperty('filterNSFW') ? options.filterNSFW : false;
     options.enableGalleries = options.hasOwnProperty('enableGalleries') ? options.enableGalleries : true;
+    options.enableStats = options.hasOwnProperty('enableStats') ? options.enableStats : true;
 
     // Action keys
     options.actionKey = options.hasOwnProperty('actionKey') ? options.actionKey : 0;

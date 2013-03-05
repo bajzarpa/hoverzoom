@@ -2,7 +2,7 @@
 // Licensed under the MIT license, read license.txt
 
 // True if the current version of the extension has something to show in an update notification
-var hasReleaseNotes = false;
+var hasReleaseNotes = true;
 
 var options, _gaq, viewWindow = null;
 
@@ -80,7 +80,7 @@ function onRequest(request, sender, callback) {
             });
             break;
         case 'trackEvent':
-            if (_gaq) {
+            if (options.enableStats && _gaq) {
                 _gaq.push(['_trackEvent', request.event.category, request.event.action, request.event.label]);
             }
             break;
@@ -165,7 +165,7 @@ function init() {
     chrome.extension.onRequest.addListener(onRequest);
 
     // Anonymous stats
-    if (navigator.appVersion.indexOf("RockMelt") == -1) {
+    if (options.enableStats && navigator.appVersion.indexOf("RockMelt") == -1) {
         setUpStats();
         miscStats();
         optionsStats();
