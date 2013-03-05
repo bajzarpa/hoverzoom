@@ -101,6 +101,7 @@ function saveOptions() {
     options.updateNotifications = $('#chkUpdateNotifications')[0].checked;
     options.filterNSFW = $('#chkFilterNSFW')[0].checked;
     options.enableGalleries = $('#chkEnableGalleries')[0].checked;
+    options.enableStats = $('#chkEnableStats')[0].checked;
 
     for (var i = 0; i < actionKeys.length; i++) {
         options[actionKeys[i].id] = parseInt($('#sel' + actionKeys[i].id).val());
@@ -140,6 +141,7 @@ function restoreOptions() {
     $('#chkUpdateNotifications')[0].checked = options.updateNotifications;
     $('#chkFilterNSFW')[0].checked = options.filterNSFW;
     $('#chkEnableGalleries')[0].checked = options.enableGalleries;
+    $('#chkEnableStats')[0].checked = options.enableStats;
 
     for (var i = 0; i < actionKeys.length; i++) {
         $('#sel' + actionKeys[i].id).val(options[actionKeys[i].id]);
